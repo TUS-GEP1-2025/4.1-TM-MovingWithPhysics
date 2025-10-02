@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class VelocityMovement : MonoBehaviour
+public class Player2Movement : MonoBehaviour
 {
     public Rigidbody2D myRigid2D;
     Vector2 myVector;
@@ -12,7 +10,7 @@ public class VelocityMovement : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -24,26 +22,26 @@ public class VelocityMovement : MonoBehaviour
     private void MoveLeftAndRight()
     {
 
-       if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.UpArrow))
         {
             myRigid2D.linearVelocityY = moveSpeed;
         }
-        if (Input.GetKey(KeyCode.S))
+        if (Input.GetKey(KeyCode.DownArrow))
         {
-            myRigid2D.linearVelocityY =- moveSpeed;
+            myRigid2D.linearVelocityY = -moveSpeed;
         }
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.RightArrow))
         {
             myRigid2D.linearVelocityX = moveSpeed;
         }
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.LeftArrow))
         {
-            myRigid2D.linearVelocityX =- moveSpeed;
-        } 
+            myRigid2D.linearVelocityX = -moveSpeed;
+        }
     }
     private void Jump()
-    { 
-        if (Input.GetKey(KeyCode.V))
+    {
+        if (Input.GetKey(KeyCode.Space))
         {
             myRigid2D.AddForce(Vector2.up * jumpForce);
         }
