@@ -23,21 +23,22 @@ public class VelocityMovement : MonoBehaviour
     }
     private void MoveLeftAndRight()
     {
+
        if (Input.GetKey(KeyCode.W))
         {
-            myRigid2D.linearVelocity =  Vector2.up * moveSpeed;
+            myRigid2D.linearVelocityY = moveSpeed;
         }
         if (Input.GetKey(KeyCode.S))
         {
-            myRigid2D.linearVelocity = Vector2.down * moveSpeed;
+            myRigid2D.linearVelocityY =- moveSpeed;
         }
         if (Input.GetKey(KeyCode.D))
         {
-            myRigid2D.linearVelocity = Vector2.right * moveSpeed;
+            myRigid2D.linearVelocityX = moveSpeed;
         }
         if (Input.GetKey(KeyCode.A))
         {
-            myRigid2D.linearVelocity = Vector2.left * moveSpeed;
+            myRigid2D.linearVelocityX =- moveSpeed;
         } 
     }
     private void Jump()
