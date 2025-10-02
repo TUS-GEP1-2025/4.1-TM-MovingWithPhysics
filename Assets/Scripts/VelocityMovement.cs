@@ -25,26 +25,26 @@ public class VelocityMovement : MonoBehaviour
     {
        if (Input.GetKey(KeyCode.W))
         {
-            myRigid2D.linearVelocity =  Vector2.up *5;
+            myRigid2D.linearVelocity =  Vector2.up * moveSpeed;
         }
         if (Input.GetKey(KeyCode.S))
         {
-            myRigid2D.linearVelocity = Vector2.down * 5;
+            myRigid2D.linearVelocity = Vector2.down * moveSpeed;
         }
         if (Input.GetKey(KeyCode.D))
         {
-            myRigid2D.linearVelocity = Vector2.right * 5;
+            myRigid2D.linearVelocity = Vector2.right * moveSpeed;
         }
         if (Input.GetKey(KeyCode.A))
         {
-            myRigid2D.linearVelocity = Vector2.left * 5;
+            myRigid2D.linearVelocity = Vector2.left * moveSpeed;
         } 
     }
     private void Jump()
     { 
         if (Input.GetKey(KeyCode.Space))
         {
-            myRigid2D.AddForce(Vector2.up * 200);
+            myRigid2D.AddForce(Vector2.up * jumpForce);
         }
     }
 }
