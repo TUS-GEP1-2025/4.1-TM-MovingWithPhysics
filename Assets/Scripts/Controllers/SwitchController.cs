@@ -8,7 +8,7 @@ public class SwitchController : MonoBehaviour
 
     public SpriteRenderer switchColor;
 
-    public RadioController radioController;
+    public RadioController2 radioController2;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -18,10 +18,10 @@ public class SwitchController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.DownArrow) && switchActive == true)
+        if (Input.GetKeyDown(KeyCode.DownArrow) && switchActive == true)
         {          
             switchColor.color = Color.green;
-            radioController.PlayNextSong();
+            radioController2.PlayNextSong();
         }
         else if (switchActive == false)
         {
