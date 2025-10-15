@@ -12,10 +12,11 @@ public class VelocityMovement : MonoBehaviour
 
     public bool isGrounded;
     public AudioSource theAudioSource;
+    public Animator theAnimator;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+          myRigid2D.freezeRotation = true;
     }
 
     // Update is called once per frame
