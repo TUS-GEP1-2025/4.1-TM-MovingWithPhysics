@@ -46,6 +46,7 @@ public class SwitchController : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             switchActive = false;
+            radioController2.StopSong();
         }
     }
 }
