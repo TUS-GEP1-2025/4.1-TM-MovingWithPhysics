@@ -4,62 +4,81 @@ using UnityEngine;
 
 public class VelocityMovement : MonoBehaviour
 {
+    [Header("Components")]
     public Rigidbody2D myRigid2D;
-    Vector2 myVector;
 
+    [Header("Movement Parameters")]
     public float moveSpeed = 5f;
-    public float jumpForce = 10f;
-
+    public float runSpeed = 8f;
+    public float jumpForce = 70f;
     public bool isGrounded;
+
+    [Header("Audio & Animation")]
     public AudioSource theAudioSource;
     public Animator theAnimator;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+
+    private void Start()
     {
-          myRigid2D.freezeRotation = true;
+        myRigid2D.freezeRotation = true;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        MoveLeftAndRight();
+        Move();
         Jump();
     }
-    private void MoveLeftAndRight()
+
+    void Move()
     {
+        float speed = moveSpeed;
 
-       if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.LeftShift))
         {
-            myRigid2D.linearVelocityY = moveSpeed;
+            speed = runSpeed;
+            theAnimator.SetBool("IsRunningStill", speed == runSpeed);
         }
-        if (Input.GetKey(KeyCode.S))
+
+        float moveDirection = 0f;
+
+        if (Input.GetKey(KeyCode.D)) 
         {
-            myRigid2D.linearVelocityY =- moveSpeed;
+            moveDirection = 1f;
+            transform.localScale = new Vector3(1, 1, 1); 
         }
-        if (Input.GetKey(KeyCode.D))
+        else if (Input.GetKey(KeyCode.A)) 
         {
-            myRigid2D.linearVelocityX = moveSpeed;
+            moveDirection = -1f;
+            transform.localScale = new Vector3(-1, 1, 1); 
         }
-        if (Input.GetKey(KeyCode.A))
-        {
-            myRigid2D.linearVelocityX =- moveSpeed;
-        } 
+
+        myRigid2D.linearVelocity = new Vector2(moveDirection * speed, myRigid2D.linearVelocity.y);
+
+        theAnimator.SetFloat("WalkSpeed", Mathf.Abs(moveDirection));
+        theAnimator.SetBool("IsRunningStill", speed == runSpeed && moveDirection != 0);
     }
-    private void Jump()
-    { 
-        if (Input.GetKey(KeyCode.V))
+
+    void Jump()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
-            myRigid2D.AddForce(Vector2.up * jumpForce);
+            myRigid2D.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            isGrounded = false;
+
+            theAnimator.Play("Jump");
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    public void FlipSwitch()
+    {
+        theAnimator.SetTrigger("Switch");
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Groundplatform"))
         {
             isGrounded = true;
         }
-
         if (collision.gameObject.CompareTag("Wall"))
         {
             theAudioSource.Play();

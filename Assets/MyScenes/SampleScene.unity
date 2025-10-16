@@ -1787,9 +1787,9 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 3
-  m_LinearDamping: 6
+  m_LinearDamping: 3
   m_AngularDamping: 0.05
-  m_GravityScale: 3
+  m_GravityScale: 6
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -1885,10 +1885,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myRigid2D: {fileID: 781639542}
   moveSpeed: 5
-  jumpForce: 10
+  runSpeed: 8
+  jumpForce: 70
   isGrounded: 0
   theAudioSource: {fileID: 781639549}
-  theAnimator: {fileID: 0}
+  theAnimator: {fileID: 781639550}
 --- !u!82 &781639549
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2074,6 +2075,7 @@ MonoBehaviour:
   switchActive: 0
   switchColor: {fileID: 817398771}
   radioController2: {fileID: 821007159}
+  theVelocityMovement: {fileID: 781639548}
 --- !u!212 &817398771 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 1815242796431726423, guid: 0292e602f5533c8449291cfc14828bbd, type: 3}

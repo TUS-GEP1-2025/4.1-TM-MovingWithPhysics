@@ -9,6 +9,9 @@ public class SwitchController : MonoBehaviour
     public SpriteRenderer switchColor;
 
     public RadioController2 radioController2;
+
+    public VelocityMovement theVelocityMovement;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -18,9 +21,10 @@ public class SwitchController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.DownArrow) && switchActive == true)
+        if (Input.GetKeyDown(KeyCode.E) && switchActive == true)
         {          
             switchColor.color = Color.green;
+            theVelocityMovement.FlipSwitch();
             radioController2.PlayNextSong();
         }
         else if (switchActive == false)
