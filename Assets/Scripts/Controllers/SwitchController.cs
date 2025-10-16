@@ -1,15 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Networking.PlayerConnection;
 using UnityEngine;
 
 public class SwitchController : MonoBehaviour
 {
+    
     public bool switchActive;
 
     public SpriteRenderer switchColor;
 
+    [Header("Connected Scripts")]
     public RadioController2 radioController2;
-
     public VelocityMovement theVelocityMovement;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created

@@ -4,10 +4,16 @@ using UnityEngine;
 
 public class RadioController2 : MonoBehaviour
 {
+    [Header("Song List")]
     public List<AudioClip> playList = new List<AudioClip>();
+
+    [Header("Audio Source")]
     private AudioSource theAudioSource;
+
+    [Header("Animator")]
     public Animator radioAnimator;
 
+    [Header("Connected Scripts")]
     public SwitchController theSwitchController;
 
     private int songIndex = 0;
